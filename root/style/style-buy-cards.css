@@ -1,0 +1,158 @@
+
+*{
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+ #logo {
+    width:150px;
+    height: 55px;
+    margin-left: 3%;
+}
+
+header {
+    background-color:#306BB3;
+    height: 10vh;
+    width: 100vw;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+}
+header>div {
+    display: flex;
+    justify-content: space-around;
+    width: 30vw;
+    align-items: center;
+}
+
+header>button {
+    color: #306BB3;
+    height: 30%;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    border-color: #306BB3;
+
+}
+
+main>h2 {
+    margin-top: 30px;
+    text-align: center;
+    color: #486284;
+    font-size: 48;
+}
+
+main>p {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 18;
+}
+
+.select_type {
+    margin: 40px;
+    height: 40px;
+    display: flex;
+    border-bottom: 1px solid #90A3BF;
+    align-items: center;
+}
+
+.select_type>div {
+    width: calc(100% / 4);
+    text-align: center;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background-color: #DEE5ED;
+    width: calc(90% / 4);
+    height: 400px;
+    padding: 2%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.card>div {
+    display:flex;
+    justify-content: space-between;
+}
+
+.card>div>p {
+    font-size: 20;
+    font-weight: bold;
+    text-transform: initial;
+}
+
+.card>picture {
+    width: 100%;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.card>div>button{
+    width: 30%;
+    height: 100%;
+    border-radius: 4px;
+    background-color: #306BB3;
+    color: #FFFFFF;
+    border: none;
+}
+footer {
+    background-color: #306BB3;
+    color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+footer>div {
+    display: flex;
+    flex-direction: column;
+   width: 50%;
+}
+
+footer>div>div {
+    margin-left: 5%;
+    width: fit-content;
+}
+
+footer>article {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    width: 50%;
+}
+
+footer>article>div {
+    width: 50%;
+    display: flex;
+    justify-content: flex;
+}
+
+footer>article>div>ul>h3 {
+    margin: 10px;
+}
+
+footer>article>div>ul>li {
+    list-style: none;
+    display: flex;
+    margin: 10px;
+}
+
+#logo {
+    width:150px;
+    height: 55px;
+    margin-left: 3%;
+}
