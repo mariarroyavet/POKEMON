@@ -1,9 +1,11 @@
-const fetchApi = async (id = 1) => {
+const pokemonContainer = document.querySelector(".pokemon-container");
+const url = `https://pokeapi.co/api/v2/pokemon`;
+
+const fetchApi = async (url) => {
     try {
-        const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
         const res = await fetch(url);
         const data = await res.json();
-        return data;
+        if (!res.ok) throw { status: res.status, statusText: res.statusText};
     }catch (error) {
         const errorMsg = document.createElement('p');
         errorMsg.textContent = `error : ${error.message}`

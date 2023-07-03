@@ -1,5 +1,4 @@
 const url = 'https://pokeapi.co/api/v2/pokemon';
-let pokemones = [];
 
 //const parentElement = document.getElementById('container'); // Corregir de acuerdo al nuevo ejemplo
 

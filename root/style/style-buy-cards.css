@@ -12,10 +12,6 @@
     --blue:#306BB3;
 }
 
-a {
-    color: white;
-    text-decoration: none;
-}
 header {
     background-color:#306BB3;
     height: 15%;
@@ -27,24 +23,41 @@ header {
 }
 header>div {
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
     width: 40%;
     align-items: center;
 }
-header>nav {
-    display: flex;
-    justify-content: space-between;
+
+header>div>nav {
+    width: 50%;
 }
 
 .btnMode {
     background-color: #ffffff;
     color: #306BB3;
-    height: 40%;
+    height: 35%;
     width: 15%;
     display: flex;
     justify-content: center;
     border-radius: 5px;
     border-color: #306BB3;
+}
+
+.list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    list-style: none;
+    color: var(--light);
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    font-weight: lighter;
+    font-size: 16px;
 }
 
 h1 {
@@ -64,6 +77,7 @@ main>p {
     margin: 40px;
     height: 40px;
     display: flex;
+    flex-direction: row;
     border-bottom: 1px solid #90A3BF;
     align-items: center;
 }
@@ -75,6 +89,11 @@ main>p {
 
 .select_type>ul>li>a {
     color: var(--dark);
+}
+
+.select_type>ul {
+    color: var(--dark);
+    
 }
 
 section {
@@ -127,6 +146,7 @@ footer {
     color: white;
     display: flex;
     flex-direction: row;
+    height: 35%;
 }
 
 footer>div {
@@ -163,6 +183,13 @@ footer>article>div>ul>li {
     margin: 10px;
 }
 
+#parFooter{
+    color: white;
+    text-decoration: none;
+    font-weight: lighter;
+    font-size: 16px;
+}
+
 #logo {
     width:140px;
     height: 50px;
@@ -171,6 +198,10 @@ footer>article>div>ul>li {
     margin-bottom: 0.8%;
 }
 
+footer>div>div>nav {
+    display: flex;
+    flex-direction: row;
+}
 .list {
     display: flex;
     flex-direction: row;

@@ -1,10 +1,10 @@
 const btnMode = document.querySelector(".btnMode");
-const colorBack = document.body;
+const body = document.querySelector("body");
 
 btnMode.addEventListener("click", function () {
-    colorBack.classList.toggle("dark");
+    body.classList.toggle("darkMode");
 
-    if (colorBack.classList.contains("dark")){
+    if (body.classList.contains("darkMode")){
         btnMode.textContent ="Light Mode";
     } else {btnMode.textContent = "Dark Mode"}
 });

@@ -1,4 +1,3 @@
-
 *{box-sizing: border-box; 
    margin: 0;
    padding: 0;
@@ -9,12 +8,16 @@
     --light:#ffffff;
     --dark:#1A202C;
 }
-
-body.dark {
-    background-color:var(--dark);
+body {
+    background-color: var(--light);
+    transition: all 1s ease;
+}
+body.darkMode {
+    background-color: var(--dark);
+    transition: all 1s ease;
 }
 
-body>header {
+header {
     background-color:#306BB3;
     height: 15%;
     width: 100%;
@@ -25,35 +28,25 @@ body>header {
 }
 header>div {
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
     width: 40%;
     align-items: center;
 }
-header>nav {
-    display: flex;
-    justify-content: space-between;
+
+header>div>nav {
+    width: 50%;
 }
 
 .btnMode {
     background-color: #ffffff;
     color: #306BB3;
-    height: 40%;
+    height: 35%;
     width: 15%;
     display: flex;
     justify-content: center;
     border-radius: 5px;
     border-color: #306BB3;
-}
-
-.btnMode.dark {
-    background-color:var(--dark);
-    color:var(--light);
-    height: 40%;
-    width: 15%;
-    display: flex;
-    justify-content: center;
-    border-radius: 5px;
-    border-color: var(--dark)
 }
 
 .list {
@@ -78,6 +71,7 @@ main {
     justify-content: space-around;
     padding: 70px;
     padding-left: 2%;
+    height: 55%;
 }
 
 section{
@@ -87,7 +81,7 @@ section{
     justify-content:space-evenly
 }
 
-h1 {
+.h1 {
     text-transform: uppercase;
     font-size: 40px;   
     font-weight: bold;
@@ -95,12 +89,17 @@ h1 {
     color: var(--dark);
 }
 
-h1.dark {
+.darkMode h1 {
     text-transform: uppercase;
     font-size: 40px;   
     font-weight: bold;
     padding-bottom: 2%;
     color: var(--light);
+}
+main>section {
+    display: flex;
+    flex-direction:column;
+    width: 50%;
 }
 main>section>p {
     font-size: 16px;
@@ -109,7 +108,7 @@ main>section>p {
     color: var(--dark);
 }
 
-main>section>p.dark {
+.darkMode main>section>p {
     font-size: 16px;
     font-weight: medium;
     padding-bottom: 5%;
@@ -122,15 +121,17 @@ main>section>p.dark {
     line-height: 150%;
     padding-bottom: 0.5%;
 }
-#parPokemon.dark {
+.darkMode #parPokemon {
     color: var(--light);
     letter-spacing: 2;
     line-height: 150%;
     padding-bottom: 0.5%;
 }
-main>img {
+.imgMain {
     display: flex;
-    height: 30%;
+    flex-direction: row;
+    justify-content: center;
+    height: 17%;
     width: 30%;
 }
 
@@ -139,9 +140,12 @@ main>section>div>a {
     margin: 5%;
     font-weight:normal;
 }
-main>section>div>a.dark {
+.darkMode main>section>div>a {
     background-color: var(--light);
     color: var(--dark);
+    width: 12%;
+    height: 30%;
+    border-radius: 5px;
 }
 
 footer {
@@ -149,6 +153,7 @@ footer {
     color: white;
     display: flex;
     flex-direction: row;
+    height: 35%;
 }
 
 footer>div {
@@ -198,11 +203,6 @@ footer>article>div>ul>li {
     margin-left: 3%;
     margin-top: 0.8%;
     margin-bottom: 0.8%;
-}
-
-.socialMedia {
-    color: #ffffff;
-    size: 2px;
 }
 
 footer>div>div>nav {
