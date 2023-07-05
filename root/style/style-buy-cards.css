@@ -74,6 +74,10 @@ main>p {
     font-size: 18;
 }
 
+main>div>ul>li>a {
+    color: #1A202C;
+}
+
 .select_type {
     color: #1A202C;
     margin: 2% 0px;
@@ -93,24 +97,28 @@ main>p {
     width: 90%;
     color: #1A202C;
 }
-main>div>ul>li>a {
-    color: #1A202C;
-}
 
 section {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 30px;
-    margin-bottom: 30px;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10%;
+}
+
+#container {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(4,25%);
+    margin: 5% auto;
 }
 
 .card {
     background-color: #DEE5ED;
-    width: calc(90% / 4);
-    height: 400px;
-    padding: 2%;
+    padding: 4%;
+    border: none;
     border-radius: 10px;
+    margin: 2%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -122,25 +130,46 @@ section {
 
 .card>div>p {
     font-size: 20;
-    font-weight: bold;
+    font-weight:500;
     text-transform: initial;
 }
 
-.card>picture {
-    width: 100%;
+.pokemonImg {
     background-color: #FFFFFF;
     display: flex;
     justify-content: center;
     border-radius: 10px;
+    margin: 2%;
+    padding: 2%;
 }
 
-.card>div>button{
+.btnBuy {
     width: 30%;
     height: 100%;
     border-radius: 4px;
     background-color: #306BB3;
     color: #FFFFFF;
     border: none;
+}
+.finisher {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.btnShowMore{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 10%;
+    height: 100%;
+    border-radius: 4px;
+    background-color: #306BB3;
+    color: #FFFFFF;
+    border: none;
+}
+.cardCount {
+    color: #306BB3;
 }
 footer {
     background-color: #306BB3;
