@@ -137,7 +137,6 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 10%;
 }
 
 #container {
@@ -200,6 +199,7 @@ section {
     background-color: #306BB3;
     color: #FFFFFF;
     border: none;
+    cursor: pointer;
 }
 
 .btnShowMore{
@@ -210,12 +210,21 @@ section {
     color: #FFFFFF;
     border: none;
     cursor: pointer;
-    margin-bottom: 2%;
-    margin-left: 40%;
+    padding: 1%;
+    margin-left: 45%;
 }
 .cardCount {
     color: #306BB3;
+    display: flex-end;
+    text-align:end;
+    margin-bottom: 2%;
+    margin-right: 4%;
 }
+
+.darkMode .cardCount  {
+    color: #ffffff;
+}
+
 footer {
     background-color: #306BB3;
     color: white;
