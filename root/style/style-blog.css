@@ -62,6 +62,10 @@ a {
     font-size: 16px;
 }
 
+a:hover {
+    font-weight: bold;
+}
+
 main>div {
     margin-top: 3%;
 }
@@ -119,6 +123,10 @@ main>section>p {
     width: 50%;
     line-height: 150%;
     margin-left: 2%;
+}
+
+.pokeName {
+    text-transform: 1;
 }
 footer {
     background-color: #306BB3;
@@ -185,4 +193,7 @@ footer>article>div>ul>li {
 footer>div>div>nav {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+    padding: 4%;
 }

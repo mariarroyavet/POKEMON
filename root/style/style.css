@@ -65,6 +65,10 @@ a {
     font-size: 16px;
 }
 
+a:hover {
+    font-weight: bold;
+}
+
 main {
     display: flex;
     flex-direction: row;
@@ -208,4 +212,7 @@ footer>article>div>ul>li {
 footer>div>div>nav {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+    padding: 4%;
 }
