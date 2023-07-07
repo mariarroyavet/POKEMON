@@ -1,5 +1,5 @@
 const btnShowMore = document.getElementsByClassName("btnShowMore");
-const containerPokemon = document.querySelector(".container");
+const parentElement = document.querySelector(".container");
 
 let url = "https://pokeapi.co/api/v2/pokemon";
 
@@ -7,9 +7,9 @@ let countCards = 0;
 let loadCards = 8;
 let offSet = 0;
 
-/*function clear () {
+function clear () {
   parentElement.innerHTML = '';
-}*/
+}
 
 //Fetching API
 const fetchApi = async (url) => {
@@ -47,7 +47,7 @@ const fetchApi = async (url) => {
   } catch (error) {
     const errorMsg = document.createElement("p");
     errorMsg.textContent = `error : ${error.message}`;
-    container.appendChild(errorMsg);
+    parentElement.appendChild(errorMsg);
   }
 };
 
@@ -77,7 +77,7 @@ const filterByType = (type) => {
 };
 
 fetchApi(url);
-//clear();
+clear();
 
 /*btnShowMore.addEventListener("click", () => {
   offset += 20;
