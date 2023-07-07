@@ -1,8 +1,15 @@
 const btnShowMore = document.getElementsByClassName("btnShowMore");
-let currentPage = 1;
+const containerPokemon = document.querySelector(".container");
+
 let url = "https://pokeapi.co/api/v2/pokemon";
 
-const parentElement = document.querySelector(".container"); // Corregir de acuerdo al nuevo ejemplo
+let countCards = 0;
+let loadCards = 8;
+let offSet = 0;
+
+/*function clear () {
+  parentElement.innerHTML = '';
+}*/
 
 //Fetching API
 const fetchApi = async (url) => {
@@ -10,16 +17,17 @@ const fetchApi = async (url) => {
     const res = await fetch(url);
     const data = await res.json();
     data.results.forEach(async (element) => {
+      // Recorriendo el arreglo
+      const response = await fetch(element.url); //Obteniendo datos de la propiedad
+      const infoPokemon = await response.json(); //Analizando la respuesta del
 
-      const response = await fetch(element.url);
-      const infoPokemon = await response.json();
+      const [type1, type2] = infoPokemon.types.map(
+        //Recorrer el arreglo
+        (typePokemon) => typePokemon.type.name
+      );
 
-      const [type1,type2] = infoPokemon.types.map( //Recorrer el arreglo
-      (type) => type.type.name
-    );
-
-//Creating cards
-      const newCard = document.createElement("div");
+      //Creating cards
+      let newCard = document.createElement("div");
       newCard.className = "card";
       newCard.innerHTML = `
             <div>
@@ -33,41 +41,43 @@ const fetchApi = async (url) => {
             </div> 
             `;
       container.appendChild(newCard);
-
+      newCard.setAttribute("type1", type1);
+      newCard.setAttribute("type2", type2);
     });
   } catch (error) {
     const errorMsg = document.createElement("p");
     errorMsg.textContent = `error : ${error.message}`;
-    parentElement.appendChild(errorMsg);
+    container.appendChild(errorMsg);
   }
 };
 
 //Creating Filters
-const filter = document.querySelectorAll(".typeElement")
-filter.forEach((filterType) =>{
-  filterType.addEventListener('click',(event) =>{
+const filters = document.querySelectorAll("typeElement");
+filters.forEach((filterType) => {
+  filterType.addEventListener("click", (event) => {
     event.preventDefault();
     const type = filterType.textContent.toLowerCase();
-    filterType(type);
+    filterByType(type);
   });
 });
 
-const applyFilter = (type) => {
-  const cards =document.querySelectorAll(".card");//revisar si con el otro método da
+const filterByType = (type) => {
+  const cards = document.querySelectorAll(".card"); //revisar si con el otro método da
   cards.forEach((card) => {
-    const cardType = card.getAttribute("type");
-    const cardTypes = cardType.split(" ");
+    const cardType1 = card.getAttribute("type1");
+    const cardType2 = card.getAttribute("type2");
 
-    if (type === "all" || cardTypes.includes(type)) {
+    if (type === "all" || cardType1 === type || cardType2 === type) {
+      //Si es tipo que me pasaron, coincide con el de la carta, entonces escondo o muestro la acarta
       card.classList.remove("hidden");
     } else {
       card.classList.add("hidden");
     }
   });
-}
-
+};
 
 fetchApi(url);
+//clear();
 
 /*btnShowMore.addEventListener("click", () => {
   offset += 20;
