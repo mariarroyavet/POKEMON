@@ -1,8 +1,8 @@
 const btnShowMore = document.getElementsByClassName("btnShowMore");
-
+let currentPage = 1;
 let url = "https://pokeapi.co/api/v2/pokemon";
 
-const parentElement = document.getElementById(".container"); // Corregir de acuerdo al nuevo ejemplo
+const parentElement = document.querySelector(".container"); // Corregir de acuerdo al nuevo ejemplo
 
 //Fetching API
 const fetchApi = async (url) => {
@@ -15,8 +15,9 @@ const fetchApi = async (url) => {
       const infoPokemon = await response.json();
 
       const [type1,type2] = infoPokemon.types.map( //Recorrer el arreglo
-      (typePokemon) => typePokemon.type.name
+      (type) => type.type.name
     );
+
 //Creating cards
       const newCard = document.createElement("div");
       newCard.className = "card";
@@ -42,21 +43,22 @@ const fetchApi = async (url) => {
 };
 
 //Creating Filters
-const filter = document.querySelectorAll("typeElement")
+const filter = document.querySelectorAll(".typeElement")
 filter.forEach((filterType) =>{
-  filterType.addEventListener('click',(signal) =>{
-    signal.preventDefault();
+  filterType.addEventListener('click',(event) =>{
+    event.preventDefault();
     const type = filterType.textContent.toLowerCase();
     filterType(type);
   });
 });
 
-const filterType =(type) => {
+const applyFilter = (type) => {
   const cards =document.querySelectorAll(".card");//revisar si con el otro método da
-  cards.forEach(card => {
+  cards.forEach((card) => {
     const cardType = card.getAttribute("type");
+    const cardTypes = cardType.split(" ");
 
-    if (type === "all" || cardType1 === type || cardType2 === type) {
+    if (type === "all" || cardTypes.includes(type)) {
       card.classList.remove("hidden");
     } else {
       card.classList.add("hidden");
