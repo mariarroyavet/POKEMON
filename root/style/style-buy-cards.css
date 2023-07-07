@@ -161,6 +161,9 @@ section {
     justify-content: space-between;
 }
 
+.card.hidden {
+    display: none;
+}
 .card:hover {
     background:#7ca4d6;
     transform: rotateY( 360deg );

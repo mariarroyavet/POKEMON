@@ -7,9 +7,6 @@ let countCards = 0;
 let loadCards = 8;
 let offSet = 0;
 
-function clear () {
-  parentElement.innerHTML = '';
-}
 
 //Fetching API
 const fetchApi = async (url) => {
@@ -17,12 +14,11 @@ const fetchApi = async (url) => {
     const res = await fetch(url);
     const data = await res.json();
     data.results.forEach(async (element) => {
-      // Recorriendo el arreglo
-      const response = await fetch(element.url); //Obteniendo datos de la propiedad
-      const infoPokemon = await response.json(); //Analizando la respuesta del
-
+      // Getting Pokemon detailed information
+      const response = await fetch(element.url);
+      const infoPokemon = await response.json();
+      //Saving pokemon types
       const [type1, type2] = infoPokemon.types.map(
-        //Recorrer el arreglo
         (typePokemon) => typePokemon.type.name
       );
 
@@ -45,30 +41,30 @@ const fetchApi = async (url) => {
       newCard.setAttribute("type2", type2);
     });
   } catch (error) {
-    const errorMsg = document.createElement("p");
-    errorMsg.textContent = `error : ${error.message}`;
-    parentElement.appendChild(errorMsg);
+    alert("Ocurrió un error en la API");
   }
 };
 
+fetchApi(url);
+
 //Creating Filters
-const filters = document.querySelectorAll("typeElement");
-filters.forEach((filterType) => {
+const filter = document.querySelectorAll(".typeElement");
+filter.forEach((filterType) => {
   filterType.addEventListener("click", (event) => {
-    event.preventDefault();
+    event.preventDefault(); //Avoid default event, instead...
     const type = filterType.textContent.toLowerCase();
-    filterByType(type);
+    filterPokemons(type);
   });
 });
 
-const filterByType = (type) => {
-  const cards = document.querySelectorAll(".card"); //revisar si con el otro método da
+//Calling type
+const filterPokemons = (type) => {
+  const cards = document.querySelectorAll(".card");
   cards.forEach((card) => {
     const cardType1 = card.getAttribute("type1");
     const cardType2 = card.getAttribute("type2");
 
     if (type === "all" || cardType1 === type || cardType2 === type) {
-      //Si es tipo que me pasaron, coincide con el de la carta, entonces escondo o muestro la acarta
       card.classList.remove("hidden");
     } else {
       card.classList.add("hidden");
@@ -76,16 +72,3 @@ const filterByType = (type) => {
   });
 };
 
-fetchApi(url);
-clear();
-
-/*btnShowMore.addEventListener("click", () => {
-  offset += 20;
-  number += 20;
-  fetchApi(url);
-});
-
-//Card count
-const cardNumber = document.querySelector(".cardCount");
-cardNumber.textContent=`"${infoPokemon.lenght} Cards`;
-*/
