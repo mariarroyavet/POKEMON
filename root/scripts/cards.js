@@ -1,48 +1,44 @@
-const btnShowMore = document.getElementsByClassName("btnShowMore");
+const btnShowMore = document.getElementById("btnShowMore");
 const parentElement = document.querySelector(".container");
-
+const cardCounterText = document.getElementById("cardCount");
 
 let countCards = 0;
 let loadCards = 8;
 let offSet = 1;
 
-let i = offSet; i <= offSet + loadCards - 1; i++
-let url = "https://pokeapi.co/api/v2/pokemon/";
-
 //Fetching API
-const fetchApi = async (url) => {
+const fetchApi = async (offSet, loadCards) => {
   try {
-    const res = await fetch(url);
-    const data = await res.json();
-    data.results.forEach(async (element) => {
-      // Getting Pokemon detailed information
-      const response = await fetch(element.url);
-      const infoPokemon = await response.json();
-      //Saving pokemon types
-      const [type1, type2] = infoPokemon.types.map(
-        (typePokemon) => typePokemon.type.name
-      );
-
-      //Creating cards
-      let newCard = document.createElement("div");
-      newCard.className = "card";
-      newCard.innerHTML = `
-            <div>
-              <p class= "pokeName">Name: ${infoPokemon.name}</p>
-              <i class = "fa-sharp fa-regular fa-heart"></i>
-            </div>
-            <img class="pokemonImg" src ="${infoPokemon.sprites.other["home"].front_default}">
-            <div>
-              <p>Level: ${infoPokemon.base_experience}</p>
-              <button class = "btnBuy">Buy</button>
-            </div> 
-            `;
-      container.appendChild(newCard);
-      newCard.setAttribute("type1", type1);
-      newCard.setAttribute("type2", type2);
-    });
+    for (let i = offSet; i <= offSet + loadCards - 1; i++) {
+      const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`);
+      const data = await res.json();
+       //Saving pokemon types
+       const [type1, type2] = data.types.map(
+          (typePokemon) => typePokemon.type.name
+       );
+       //Creating cards
+       let newCard = document.createElement("div");
+       newCard.className = "card";
+       newCard.innerHTML = `
+             <div>
+               <p class= "pokeName">Name: ${data.name}</p>
+               <i class = "fa-sharp fa-regular fa-heart"></i>
+             </div>
+             <img class="pokemonImg" src ="${data.sprites.other["home"].front_default}">
+             <div>
+               <p>Level: ${data.base_experience}</p>
+               <button class = "btnBuy">Buy</button>
+             </div> 
+             `;
+       container.appendChild(newCard);
+       newCard.setAttribute("type1", type1);
+       newCard.setAttribute("type2", type2);
+       countCards = countCards + 1;
+    }
+    cardCounterUpdate(countCards)
   } catch (error) {
     alert("Ocurrió un error en la API");
+    console.log(error)
   }
 };
 
@@ -71,8 +67,16 @@ const filterPokemons = (type) => {
   });
 };
 
-fetchApi(url);
+//Update cards counter
+const cardCounterUpdate = (countCards) => {
+  console.log('Contador', countCards)
+  cardCounterText.textContent = `${countCards} Cards`;
+}
 
-/*btnShowMore.addEventListener('click', () => {
-  fetchApi(url);
-});*/
+fetchApi(offSet, loadCards);
+
+btnShowMore.addEventListener('click', () => {
+  offSet += 8;
+  fetchApi(offSet, loadCards);
+});
+
