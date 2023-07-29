@@ -145,11 +145,9 @@ main>section>div>a {
     font-weight:normal;
 }
 .darkMode main>section>div>a {
-    background-color: var(--light);
-    color: var(--dark);
+    color: var(--light);
     width: 12%;
     height: 30%;
-    border-radius: 5px;
 }
 
 footer {

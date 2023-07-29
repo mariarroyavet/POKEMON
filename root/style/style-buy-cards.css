@@ -22,6 +22,7 @@ body {
 body.darkMode {
     background-color: var(--dark);
     transition: all 1s ease;
+    --font-color: #FFFFFF;
 }
 header {
     background-color:#306BB3;
@@ -104,35 +105,40 @@ main>div>ul>li>a {
     color: var(--light);
 }
 
-.select_type {
-    display: flex;
-    justify-content: space-around;
-    color: #1A202C;
-    width: 76%;
-    margin-left: 12%;
-    border-bottom: 2px solid #90A3BF;
- 
-}
-
-.select_type:hover {
-    font-weight: bold;
-    border-bottom: 3px solid #90A3BF; 
-}
-
-.active{
-    color:#1A202C;
-    font-weight: bold;
-    border-bottom: 4px solid #1A202C;
-    }
-
-
 .typeElements {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-eve;
     margin: 2% 0;
-    width: 76%;
-    color: #1A202C;        
+    width: 76%;    
+    margin-left: 12%;
+    font-size: 17px;
+    margin-bottom: 2% ;      
 }
+
+.typeElement{
+    font-weight: bold;
+    color:#1A202C;
+    margin: 2% 0;
+    padding-bottom: 1%;
+    margin-bottom: 1%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.tabActive {
+    color: var(--font-color);
+    border-bottom: 5px solid #306BB3;
+    font-weight: bold;
+    width: 87%;
+}
+
+.tabInactive {
+    color: var(--font-color);
+    border-bottom: 1px solid #486284;
+    font-weight: normal;
+    width: 100%;
+}
+
 section {
     display: flex;
     flex-direction: column;
@@ -176,6 +182,10 @@ section {
     font-size: 20;
     font-weight:500;
     text-transform: initial;
+}
+
+.fa-heart {
+    cursor:pointer;
 }
 
 .pokemonImg {

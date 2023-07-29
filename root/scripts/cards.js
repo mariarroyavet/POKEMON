@@ -1,6 +1,9 @@
 const btnShowMore = document.getElementById("btnShowMore");
 const parentElement = document.querySelector(".container");
 const cardCounterText = document.getElementById("cardCount");
+const typeElement = document.querySelectorAll("typeElements");
+
+console.log(typeElement);
 
 let countCards = 0;
 let loadCards = 8;
@@ -45,6 +48,7 @@ const fetchApi = async (offSet, loadCards) => {
 //Creating Filters
 const filter = document.querySelectorAll(".typeElement");
 filter.forEach((filterType) => {
+   console.log("hola mundo")
   filterType.addEventListener("click", (event) => {
     event.preventDefault(); //Avoid default event, instead...
     const type = filterType.textContent.toLowerCase();
@@ -58,13 +62,16 @@ const filterPokemons = (type) => {
   cards.forEach((card) => {
     const cardType1 = card.getAttribute("type1");
     const cardType2 = card.getAttribute("type2");
-
     if (type === "all" || cardType1 === type || cardType2 === type) {
       card.classList.remove("hidden");
     } else {
       card.classList.add("hidden");
     }
-  });
+  })
+  const tabActive = document.querySelector('.tabActive');
+    tabActive.classList.replace('tabActive','tabInactive');
+    event.target.classList.replace('tabInactive','tabActive');
+    event.preventDefault();
 };
 
 //Update cards counter
@@ -79,4 +86,3 @@ btnShowMore.addEventListener('click', () => {
   offSet += 8;
   fetchApi(offSet, loadCards);
 });
-
